@@ -1,5 +1,5 @@
 {
-  "name": "podmap.me",
+  "name": "ohheyit.me",
   "version": "1.0.0",
   "description": "a little website to help map pods",
   "main": "index.js",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/travis/podmap.me.git"
+    "url": "git+ssh://git@github.com/travis/ohheyit.me.git"
   },
   "keywords": [
     "solid",
@@ -21,9 +21,9 @@
   "author": "Travis Vachon <travis.vachon@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/travis/podmap.me/issues"
+    "url": "https://github.com/travis/ohheyit.me/issues"
   },
-  "homepage": "https://github.com/travis/podmap.me#readme",
+  "homepage": "https://github.com/travis/ohheyit.me#readme",
   "dependencies": {
     "@solid/query-ldflex": "^2.6.0",
     "@solid/react": "^1.7.0",
