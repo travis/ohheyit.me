@@ -6,8 +6,8 @@ import { Login, Register, PageNotFound, Welcome, RegistrationSuccess } from './c
 
 const privateRoutes = [
   {
-    id: 'welcome',
-    path: '/welcome',
+    id: 'home',
+    path: '/',
     component: Welcome
   }
 ];
@@ -20,7 +20,6 @@ const Routes = () => (
         <NotLoggedInLayout component={Register} path="/register" exact />
         <NotLoggedInLayout path="/register/success" component={RegistrationSuccess} exact />
         <PublicLayout path="/404" component={PageNotFound} exact />
-        <Redirect from="/" to="/welcome" exact />
         <PrivateLayout path="/" routes={privateRoutes} />
         <Redirect to="/404" />
       </Switch>
