@@ -2,13 +2,18 @@ import React, { Fragment } from 'react';
 import { PrivateLayout, PublicLayout, NotLoggedInLayout } from '@layouts';
 import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 
-import { Login, Register, PageNotFound, Welcome, RegistrationSuccess } from './containers';
+import { Login, Register, PageNotFound, Welcome, RegistrationSuccess, Profile } from './containers';
 
 const privateRoutes = [
   {
     id: 'home',
     path: '/',
     component: Welcome
+  },
+  {
+    id: 'profile',
+    path: '/:slug',
+    component: Profile
   }
 ];
 

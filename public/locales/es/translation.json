@@ -89,6 +89,7 @@
     }
   },
   "profile": {
+    "intro": "oh hey, soy",
     "successCallback": "Pod actualizado satisfactoriamente",
     "successTitle": "Éxito",
     "errorCallback": "Ha ocurrido un error al enviar el formulario",
