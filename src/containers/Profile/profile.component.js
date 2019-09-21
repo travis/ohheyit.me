@@ -27,13 +27,19 @@ const AddRelationshipButton = ({
   }
 }
 
+const Friend = ({webId}) => {
+  const nameLd = useLDflexValue(`[${webId}].vcard_fn`)
+
+  return (<div>{nameLd && nameLd.value}</div>)
+}
+
 /**
  * Profile Page UI component, containing the styled components for the Profile Page
  * Image component will get theimage context and resolve the value to render.
  * @param props
  */
 export const ProfilePageContent = props => {
-  const { webId, image, name, currentUserFriends, addFriend, deleteFriend } = props;
+  const { webId, image, name, friends, currentUserFriends, addFriend, deleteFriend } = props;
   const { t } = useTranslation();
 
   const areWeFriends = currentUserFriends.find(n => n == webId)
@@ -53,6 +59,9 @@ export const ProfilePageContent = props => {
                                   deleteContent={`I don't know ${name}`}
                                   existsContent={`You know ${name}`}/>
           }
+          <h3>Friends</h3>
+          {friends && friends.map(friend => <Friend key={friend.value}
+                                                    webId={friend.value}/>)}
         </ProfileDetail>
       </ProfileCard>
     </ProfileWrapper>

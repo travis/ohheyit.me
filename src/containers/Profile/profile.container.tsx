@@ -25,6 +25,8 @@ export const ProfileComponent = withRouter(({ match: { params: { slug } } }) => 
     const imageLd = useLDflexValue(`[${webId}].vcard_hasPhoto`)
     const image = (imageLd && imageLd.value) || defaultProfilePhoto
 
+    const friends = useLDflexList(`[${webId}].friends`)
+
     const addFriend = async () =>
         await data.user.friends.add(webId)
     const deleteFriend = async () =>
@@ -32,7 +34,7 @@ export const ProfileComponent = withRouter(({ match: { params: { slug } } }) => 
 
     return (
         <ProfilePageContent {...{
-            name, image, webId, currentUserFriends, addFriend, deleteFriend
+            name, image, webId, friends, currentUserFriends, addFriend, deleteFriend
         }} />
     );
 })
