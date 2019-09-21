@@ -50,9 +50,11 @@ const PublicLayout = props => {
             />
           )}
           <ComponentWrapper {...{ history, location, match }} />
+          {/*
           <FooterContainer>
             <Footer />
           </FooterContainer>
+           */}
         </Container>
       )}
     />

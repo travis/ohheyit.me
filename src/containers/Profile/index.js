@@ -1,3 +1,11 @@
+import React from 'react'
+
+import { LiveUpdate } from '@solid/react'
+
 import { ProfileComponent } from './profile.container';
 
-export default ProfileComponent;
+export default () => (
+  <LiveUpdate>
+    <ProfileComponent/>
+  </LiveUpdate>
+);

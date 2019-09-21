@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Uploader } from '@inrupt/solid-react-components';
-import { FollowButton } from '@solid/react';
+import { useLDflexValue, useLDflexList, LiveUpdate } from '@solid/react'
 import { Trans, useTranslation } from 'react-i18next';
 import {
   ProfileWrapper,
@@ -14,15 +14,30 @@ import {
 import { ImageProfile } from '@components';
 import { errorToaster } from '@utils';
 
+const AddRelationshipButton = ({
+  add, del, exists, addContent, deleteContent, existsContent
+}) => {
+  const [hover, setHover] = useState(false)
+  if (exists) {
+    return <button onMouseEnter={() => setHover(true)}
+                   onMouseLeave={() => setHover(false)}
+                   onClick={del}>{hover ? deleteContent : existsContent}</button>
+  } else {
+    return <button onClick={add}>{addContent}</button>
+  }
+}
+
 /**
  * Profile Page UI component, containing the styled components for the Profile Page
  * Image component will get theimage context and resolve the value to render.
  * @param props
  */
 export const ProfilePageContent = props => {
-  const { webId, image, name } = props;
+  const { webId, image, name, currentUserFriends, addFriend, deleteFriend } = props;
   const { t } = useTranslation();
-  const limit = 2100000;
+
+  const areWeFriends = currentUserFriends.find(n => n == webId)
+
   return (
     <ProfileWrapper data-testid="profile-wrapper">
       <ProfileCard className="card">
@@ -31,7 +46,13 @@ export const ProfilePageContent = props => {
             {t('profile.intro')} <ProfileName>{name}</ProfileName>
           </h3>
           <ProfileImage src={image}/>
-          <FollowButton object={webId}>me</FollowButton>
+          {currentUserFriends &&
+           <AddRelationshipButton add={addFriend} del={deleteFriend}
+                                  exists={areWeFriends}
+                                  addContent={`I know ${name}`}
+                                  deleteContent={`I don't know ${name}`}
+                                  existsContent={`You know ${name}`}
+                      />}
         </ProfileDetail>
       </ProfileCard>
     </ProfileWrapper>

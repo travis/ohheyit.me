@@ -4,6 +4,7 @@ import data from '@solid/query-ldflex';
 import { namedNode } from '@rdfjs/data-model';
 import { ProfilePageContent } from './profile.component';
 import { successToaster, errorToaster } from '@utils';
+import { useLDflexValue, useLDflexList, LiveUpdate } from '@solid/react'
 
 const defaultProfilePhoto = '/img/icon/empty-profile.svg';
 
@@ -21,10 +22,18 @@ export const ProfileComponent = withRouter(({match: {params: {slug}}}) => {
   const [isLoading, setIsLoading] = useState(true)
   const [name, setName] = useState(null)
   const [image, setImage] = useState(null)
+  const currentUserFriends = useLDflexList("user.friends")
+
+  const addFriend = async () =>
+    await data.user.friends.add(webId)
+  const deleteFriend = async () =>
+    await data.user.friends.delete(webId)
+
   useEffect(() => {(async () => {
     const user = data[webId];
-      const nameLd = await user.vcard_fn;
+    const nameLd = await user.vcard_fn
     setName(nameLd && nameLd.value.trim().length > 0 ? nameLd.value : webId.toString())
+
     const imageLd = await user.vcard_hasPhoto;
     if (imageLd && imageLd.value) {
       setImage(imageLd.value)
@@ -35,6 +44,7 @@ export const ProfileComponent = withRouter(({match: {params: {slug}}}) => {
   })()}, [webId])
 
   return (
-    <ProfilePageContent {...{ name, image, isLoading, webId }} />
+      <ProfilePageContent {...{ name, image, isLoading, webId,
+                                currentUserFriends, addFriend, deleteFriend }} />
   );
 })
