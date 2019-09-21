@@ -20,8 +20,10 @@ const slug2WebId = (slug: string): string => slugs2WebIds[slug]
 export const ProfileComponent = withRouter(({ match: { params: { slug } } }) => {
     const webId = slug2WebId(slug) || slug;
     const currentUserFriends = useLDflexList("user.friends")
+    const currentUserLd = useLDflexValue(`user`)
+    const currentUserWebId = currentUserLd && currentUserLd.value
     const nameLd = useLDflexValue(`[${webId}].vcard_fn`)
-    const name = (nameLd && nameLd.value.trim().length > 0 ? nameLd.value : webId.toString())
+    const name = (nameLd && nameLd.value)
     const imageLd = useLDflexValue(`[${webId}].vcard_hasPhoto`)
     const image = (imageLd && imageLd.value) || defaultProfilePhoto
 
@@ -34,7 +36,7 @@ export const ProfileComponent = withRouter(({ match: { params: { slug } } }) => 
 
     return (
         <ProfilePageContent {...{
-            name, image, webId, friends, currentUserFriends, addFriend, deleteFriend
+            name, image, webId, friends, currentUserWebId, currentUserFriends, addFriend, deleteFriend
         }} />
     );
 })

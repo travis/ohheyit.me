@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { Uploader } from '@inrupt/solid-react-components';
 import { useLDflexValue, useLDflexList, LiveUpdate } from '@solid/react'
+import data from '@solid/query-ldflex';
 import { Trans, useTranslation } from 'react-i18next';
 import {
   ProfileWrapper,
@@ -39,10 +40,11 @@ const Friend = ({webId}) => {
  * @param props
  */
 export const ProfilePageContent = props => {
-  const { webId, image, name, friends, currentUserFriends, addFriend, deleteFriend } = props;
+  const { webId, image, name, friends, currentUserWebId, currentUserFriends, addFriend, deleteFriend } = props;
   const { t } = useTranslation();
 
-  const areWeFriends = currentUserFriends.find(n => n == webId)
+  const areWeFriends = currentUserFriends.find(n => n === webId)
+  const currentUserProfile = (currentUserWebId === webId)
 
   return (
     <ProfileWrapper data-testid="profile-wrapper">
@@ -52,7 +54,8 @@ export const ProfilePageContent = props => {
             {t('profile.intro')} <ProfileName>{name}</ProfileName>
           </h3>
           <ProfileImage src={image}/>
-          {currentUserFriends &&
+          {!currentUserProfile && (currentUserWebId !== null) &&
+           currentUserFriends && name &&
            <AddRelationshipButton add={addFriend} del={deleteFriend}
                                   exists={areWeFriends}
                                   addContent={`I know ${name}`}
