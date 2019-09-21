@@ -43,7 +43,7 @@ export const ProfilePageContent = props => {
   const { webId, image, name, friends, currentUserWebId, currentUserFriends, addFriend, deleteFriend } = props;
   const { t } = useTranslation();
 
-  const areWeFriends = currentUserFriends.find(n => n === webId)
+  const areWeFriends = currentUserFriends.find(n => n.value === webId)
   const currentUserProfile = (currentUserWebId === webId)
 
   return (
@@ -62,9 +62,19 @@ export const ProfilePageContent = props => {
                                   deleteContent={`I don't know ${name}`}
                                   existsContent={`You know ${name}`}/>
           }
-          <h3>Friends</h3>
-          {friends && friends.map(friend => <Friend key={friend.value}
-                                                    webId={friend.value}/>)}
+          {friends && (
+            <>
+              <h3>Friends</h3>
+              {friends.length > 0 ? (
+                friends.map(friend => <Friend key={friend.value}
+                                              webId={friend.value}/>)
+
+              ) : (
+                <>You don't have any friends yet!</>
+              )
+              }
+            </>
+          )}
         </ProfileDetail>
       </ProfileCard>
     </ProfileWrapper>
