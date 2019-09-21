@@ -51,8 +51,8 @@ export const ProfilePageContent = props => {
                                   exists={areWeFriends}
                                   addContent={`I know ${name}`}
                                   deleteContent={`I don't know ${name}`}
-                                  existsContent={`You know ${name}`}
-                      />}
+                                  existsContent={`You know ${name}`}/>
+          }
         </ProfileDetail>
       </ProfileCard>
     </ProfileWrapper>
