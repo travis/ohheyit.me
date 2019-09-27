@@ -1,19 +1,13 @@
 import React, {useState} from 'react';
-import { Uploader } from '@inrupt/solid-react-components';
-import { useLDflexValue, useLDflexList, LiveUpdate } from '@solid/react'
-import data from '@solid/query-ldflex';
-import { Trans, useTranslation } from 'react-i18next';
+import { useLDflexValue } from '@solid/react'
+import { useTranslation } from 'react-i18next';
 import {
   ProfileWrapper,
   ProfileCard,
-  ProfileLogo,
-  ProfileProfile,
   ProfileDetail,
   ProfileName,
   ProfileImage
 } from './profile.style';
-import { ImageProfile } from '@components';
-import { errorToaster } from '@utils';
 
 const AddRelationshipButton = ({
   add, del, exists, addContent, deleteContent, existsContent

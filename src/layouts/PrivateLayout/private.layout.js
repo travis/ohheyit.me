@@ -6,7 +6,7 @@ import {
   AppPermission,
   AccessControlList
 } from '@inrupt/solid-react-components';
-import { AuthNavBar, Footer } from '@components';
+import { AuthNavBar } from '@components';
 import { errorToaster, checkAppPermissions } from '@utils';
 import styled from 'styled-components';
 
@@ -41,7 +41,7 @@ const PrivateLayout = ({ routes, webId, location, history, ...rest }) => {
      * Get modes permissions from solid-react-components
      */
     const permissions = AccessControlList.MODES;
-    const { APPEND, READ, WRITE, CONTROL } = permissions;
+    const { APPEND, READ, WRITE } = permissions;
 
     if (!checkAppPermissions(userApp.permissions, [APPEND, READ, WRITE])) {
       errorToaster(t('appPermission.message'), t('notifications.error'), {
