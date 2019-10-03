@@ -5,14 +5,11 @@ import { namedNode } from '@rdfjs/data-model';
 import { ProfilePageContent } from './profile.component';
 import { successToaster, errorToaster } from '@utils';
 import { useLDflexValue, useLDflexList } from '@solid/react'
+import slug2WebId from '../../slug2WebId'
+
+window.data = data
 
 const defaultProfilePhoto = '/img/icon/empty-profile.svg';
-
-const slugs2WebIds = {
-    travis: "https://tvachon.inrupt.net/profile/card#me",
-    toby: "https://tobytoberson.inrupt.net/profile/card#me"
-}
-const slug2WebId = (slug: string): string => slugs2WebIds[slug]
 
 /**
  * Container component for the Profile Page, containing example of how to fetch data from a POD
@@ -24,6 +21,7 @@ export const ProfileComponent = withRouter(({ match: { params: { slug } } }) => 
     const currentUserWebId = currentUserLd && currentUserLd.value
     const nameLd = useLDflexValue(`[${webId}].vcard_fn`)
     const name = (nameLd && nameLd.value)
+
     const imageLd = useLDflexValue(`[${webId}].vcard_hasPhoto`)
     const image = (imageLd && imageLd.value) || defaultProfilePhoto
 

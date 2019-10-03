@@ -2,7 +2,7 @@ import React from 'react'
 
 import { LiveUpdate } from '@solid/react'
 
-import { ProfileComponent } from './profile.container.tsx';
+import { ProfileComponent } from './profile.container';
 
 export default () => (
   <LiveUpdate>
