@@ -9,23 +9,29 @@ import slug2WebId from '../../slug2WebId'
 
 const title = "https://ohhey.fyi/thisisa/belief/title"
 
+const Belief = ({name, beliefs, beliefSlug}) => {
+  const beliefLd = useLDflexValue(`[${beliefs}/${beliefSlug}][${title}]`)
+  const belief = beliefLd && beliefLd.value
+
+
+  return (
+    <BeliefPageContent {...{ name, belief }} />
+  )
+}
+
 /**
  * Container component for the Belief Page, containing example of how to fetch data from a POD
  */
 export const BeliefComponent = withRouter(({ match: { params: { slug, beliefSlug } } }) => {
-  console.log(slug)
-  console.log(beliefSlug)
-  console.log(slug2WebId(slug))
   const webId = slug2WebId(slug) || slug;
   const beliefsLd = useLDflexValue(`[${webId}].hasBeliefs`)
   const beliefs = beliefsLd && beliefsLd.value
-  const beliefLd = useLDflexValue(`[${beliefs}/${beliefSlug}][${title}]`)
-  const belief = beliefLd && beliefLd.value
-  console.log(`BEEEE ${belief}`)
 
   const nameLd = useLDflexValue(`[${webId}].vcard_fn`)
   const name = nameLd && nameLd.value
-  return (
-    <BeliefPageContent {...{ name, belief }} />
-  );
+  return beliefs ? (
+    <BeliefPageContent {...{ name, beliefs }} />
+  ) : (
+    "Loading..."
+  )
 })

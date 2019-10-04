@@ -9,6 +9,8 @@ import {
   BeliefImage
 } from './belief.style';
 
+const title = "https://ohhey.fyi/thisisa/belief/title"
+
 /**
  * Belief Page UI component, containing the styled components for the Belief Page
  * @param props
