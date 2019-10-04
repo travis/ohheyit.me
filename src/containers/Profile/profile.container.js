@@ -7,8 +7,6 @@ import { successToaster, errorToaster } from '@utils';
 import { useLDflexValue, useLDflexList } from '@solid/react'
 import slug2WebId from '../../slug2WebId'
 
-window.data = data
-
 const defaultProfilePhoto = '/img/icon/empty-profile.svg';
 
 /**

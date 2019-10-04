@@ -8,7 +8,7 @@ import {
   WelcomeName,
   ImageWrapper
 } from './welcome.style';
-import { ImageProfile } from '@components';
+import { ImageProfile, Install } from '@components';
 import { errorToaster } from '@utils';
 
 /**
@@ -27,6 +27,7 @@ export const WelcomePageContent = props => {
           <h3>
             {t('welcome.welcome')}, <WelcomeName>{name}</WelcomeName>
           </h3>
+          <Install/>
           <ImageWrapper>
             <Uploader
               {...{

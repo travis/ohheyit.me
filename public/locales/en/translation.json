@@ -88,6 +88,9 @@
       "maximumFiles": "Sorry, you have exceeded the maximum number of files allowed per upload"
     }
   },
+  "belief": {
+    "intro": "{{name}} believes {{belief}}"
+  },
   "profile": {
     "intro": "oh hey, it's",
     "successCallback": "Pod updated successfully",

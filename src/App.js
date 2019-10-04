@@ -13,9 +13,17 @@ import 'normalize.css';
 import './index.css';
 import '@inrupt/solid-style-guide';
 import { Toaster } from './App.styled';
+import data from '@solid/query-ldflex'
 
 library.add(fas);
 library.add(faGithub);
+
+data.context.extend({
+  believes: "https://ohhey.fyi/someone/believes",
+  hasBeliefs: "https://ohhey.fyi/someone/hasBeliefs",
+  hasDisbeliefs:"https://ohhey.fyi/someoneexists/hasDisbeliefs"
+})
+
 const App = () => (
   <Suspense fallback={<Loader />}>
     <ThemeProvider theme={theme}>
