@@ -7,7 +7,7 @@ import { successToaster, errorToaster } from '@utils';
 import { useLDflexValue, useLDflexList } from '@solid/react'
 import slug2WebId from '../../slug2WebId'
 
-window.data = data
+const title = "https://ohhey.fyi/thisisa/belief/title"
 
 /**
  * Container component for the Belief Page, containing example of how to fetch data from a POD
@@ -19,12 +19,13 @@ export const BeliefComponent = withRouter(({ match: { params: { slug, beliefSlug
   const webId = slug2WebId(slug) || slug;
   const beliefsLd = useLDflexValue(`[${webId}].hasBeliefs`)
   const beliefs = beliefsLd && beliefsLd.value
-  const belief = useLDflexValue(`[${beliefs}/${beliefSlug}]`)
+  const beliefLd = useLDflexValue(`[${beliefs}/${beliefSlug}][${title}]`)
+  const belief = beliefLd && beliefLd.value
   console.log(`BEEEE ${belief}`)
 
   const nameLd = useLDflexValue(`[${webId}].vcard_fn`)
   const name = nameLd && nameLd.value
   return (
-    <BeliefPageContent {...{ name }} />
+    <BeliefPageContent {...{ name, belief }} />
   );
 })

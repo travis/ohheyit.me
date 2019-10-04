@@ -14,15 +14,14 @@ import {
  * @param props
  */
 export const BeliefPageContent = props => {
-  const { webId, image, name, friends } = props;
+  const { name, belief } = props;
   const { t } = useTranslation();
-  const belief = ""
   return (
     <BeliefWrapper data-testid="belief-wrapper">
       <BeliefCard className="card">
         <BeliefDetail data-testid="belief-detail">
           <h3>
-            {t('belief.intro', {name, belief})} <BeliefName>{belief}</BeliefName>
+            {t('belief.intro', {name, belief})}
           </h3>
         </BeliefDetail>
       </BeliefCard>
