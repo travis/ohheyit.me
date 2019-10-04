@@ -1,10 +1,7 @@
-import React, { Component, useEffect, useState } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
-import data from '@solid/query-ldflex';
-import { namedNode } from '@rdfjs/data-model';
 import { BeliefPageContent } from './belief.component';
-import { successToaster, errorToaster } from '@utils';
-import { useLDflexValue, useLDflexList } from '@solid/react'
+import { useLDflexValue } from '@solid/react'
 import slug2WebId from '../../slug2WebId'
 
 const title = "https://ohhey.fyi/thisisa/belief/title"
@@ -30,7 +27,7 @@ export const BeliefComponent = withRouter(({ match: { params: { slug, beliefSlug
   const nameLd = useLDflexValue(`[${webId}].vcard_fn`)
   const name = nameLd && nameLd.value
   return beliefs ? (
-    <BeliefPageContent {...{ name, beliefs }} />
+    <Belief {...{ name, beliefs, beliefSlug }} />
   ) : (
     "Loading..."
   )

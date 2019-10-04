@@ -1,14 +1,10 @@
-import React, {useState} from 'react';
-import { useLDflexValue, useLDflexList } from '@solid/react'
+import React from 'react';
+import { useLDflexValue } from '@solid/react'
 
 import data from '@solid/query-ldflex';
 
 
-export default ({
-
-}) => {
-  const [hover, setHover] = useState(false)
-
+export default () => {
   const install = async () => {
     const webId = (await data.user).value
     await data.user.hasBeliefs.set(new URL("/beliefs", webId).toString())
@@ -17,9 +13,7 @@ export default ({
   const installed = installedLd && installedLd.value
 
   if (!installed) {
-    return <button onMouseEnter={() => setHover(true)}
-                   onMouseLeave={() => setHover(false)}
-                   onClick={install}>Install</button>
+    return <button onClick={install}>Install</button>
   } else {
     return "INSTALLED!"
   }

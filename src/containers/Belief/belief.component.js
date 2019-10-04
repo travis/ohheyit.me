@@ -1,15 +1,10 @@
-import React, {useState} from 'react';
-import { useLDflexValue } from '@solid/react'
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   BeliefWrapper,
   BeliefCard,
-  BeliefDetail,
-  BeliefName,
-  BeliefImage
+  BeliefDetail
 } from './belief.style';
-
-const title = "https://ohhey.fyi/thisisa/belief/title"
 
 /**
  * Belief Page UI component, containing the styled components for the Belief Page

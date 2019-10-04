@@ -1,9 +1,7 @@
-import React, { Component, useEffect, useState } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 import data from '@solid/query-ldflex';
-import { namedNode } from '@rdfjs/data-model';
 import { ProfilePageContent } from './profile.component';
-import { successToaster, errorToaster } from '@utils';
 import { useLDflexValue, useLDflexList } from '@solid/react'
 import slug2WebId from '../../slug2WebId'
 
