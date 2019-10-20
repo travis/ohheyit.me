@@ -1,6 +1,6 @@
 import data from '@solid/query-ldflex';
 
-const appPath = process.env.REACT_APP_TICTAC_PATH;
+const appPath = process.env.REACT_APP_ITME_PATH;
 
 /**
  * Creates a valid string that represents the application path. This is the
