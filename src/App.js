@@ -21,7 +21,7 @@ library.add(faGithub);
 data.context.extend({
   believes: "https://ohhey.fyi/someone/believes",
   hasBeliefs: "https://ohhey.fyi/someone/hasBeliefs",
-  hasDisbeliefs:"https://ohhey.fyi/someoneexists/hasDisbeliefs"
+  hasDisbeliefs:"https://ohhey.fyi/someone/hasDisbeliefs"
 })
 
 const App = () => (

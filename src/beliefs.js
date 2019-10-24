@@ -1,6 +1,6 @@
 var dtype = data[ 'http://schema.org/Document' ]
 
-var title = "https://ohhey.fyi/thisisa/belief/title"
+var title = "https://ohhey.fyi/thisisa/belief#title"
 
 var believes = "https://ohhey.fyi/someone/believes"
 var hasBeliefs = "https://ohhey.fyi/someone/hasBeliefs"
@@ -23,5 +23,20 @@ cats[title].add("Cats are cool").then(x => console.log(x))
 
 beliefs[believes].then(x => console.log(x))
 
-for await (const url of beliefs[believes])
+for await (const url of ldflex.from('https://tvachon.inrupt.net/public/ohhey/itme/beliefs')) {
+  console.log("thing: ", url)
+}
 console.log(`  - ${url} is a belief`);
+
+
+['cats-are-cool']["https://ohhey.fyi/thisisa/belief/title"].add("Cats are cool").then(console.log)
+
+ldflex["https://tvachon.inrupt.net/public/ohhey/itme/beliefs"]["https://tvachon.inrupt.net/public/ohhey/itme/beliefs/cats-are-cool"].then(x => console.log("X", x))
+
+ldflex["https://tvachon.inrupt.net/public/ohhey/itme/beliefs/"].then(x => console.log("X", x))
+
+ldflex.from(['https://tvachon.inrupt.net/public/ohhey/itme/beliefs', 'https://tvachon.inrupt.net/public/ohhey/itme/beliefs/cats-are-cool'])['https://tvachon.inrupt.net/public/ohhey/itme/beliefs/cats-are-cool']['https://ohhey.fyi/thisisa/belief/title'].then(console.log)
+
+ldflex.from(['https://tvachon.inrupt.net/public/ohhey/itme/beliefs/'])['https://tvachon.inrupt.net/public/ohhey/itme/beliefs/cats-are-cool']["https://ohhey.fyi/thisisa/belief/title"].set("Cats are cool").then(console.log)
+
+ldflex["https://tvachon.inrupt.net/public/ohhey/itme/beliefs/"]['https://tvachon.inrupt.net/public/ohhey/itme/beliefs/cats-are-cool']["https://ohhey.fyi/thisisa/belief/title"].set("Cats are cool").then(x => console.log("X", x))
